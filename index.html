@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Future Tech | Home</title>
+    <title>ИП «Ер-Ас»</title>
 
     <link rel="stylesheet" href="./styles/main.css" />
 
@@ -37,20 +37,25 @@
             />
           </a>
           <div class="header__overlay" data-js-header-overlay>
-            <nav class="header__menu">
+            <nav class="header__menu" data-js-header-menu>
               <ul class="header__menu-list">
                 <li class="header__menu-item">
-                  <a href="./index.html" class="header__menu-link is-active"
-                    >Главная</a
+                  <a
+                    href="./index.html"
+                    class="header__menu-link is-active"
+                    data-js-header-menu-link
                   >
-                </li>
-                <li class="header__menu-item">
-                  <a href="/" class="header__menu-link">
-                    Оборудование для переработки отходов
+                    Главная
                   </a>
                 </li>
                 <li class="header__menu-item">
-                  <a href="/" class="header__menu-link">Контакты</a>
+                  <a
+                    href="./feed-project.html"
+                    class="header__menu-link"
+                    data-js-header-menu-link
+                  >
+                    Оборудование для переработки отходов
+                  </a>
                 </li>
               </ul>
             </nav>
@@ -82,7 +87,9 @@
       />
 
       <div class="hero__inner">
-        <span class="hero__title">Индивидуальный предприниматель «Ер-Ас»</span>
+        <span class="hero__title">
+          Индивидуальный предприниматель «Ер-Ас»
+        </span>
       </div>
     </div>
 
@@ -144,7 +151,10 @@
     </main>
 
     <footer class="footer">
-      <h1>Footer</h1>
+      <div class="footer__promo container">
+        <h1>Footer</h1>
+      </div>
+      <div class="footer__body container"></div>
     </footer>
   </body>
 </html>

@@ -705,8 +705,8 @@ button[aria-label]::before {
 .header__menu-link.is-active {
   font-weight: 500;
   color: var(--color-text-on-forest);
-  background-color: var(--color-forest-300);
-  border: 0.125rem solid var(--color-forest-500);
+  background-color: var(--color-forest-900);
+  border: 0.0625rem solid var(--color-forest-500);
   box-shadow: var(--shadow);
   border-radius: 0.625rem;
   pointer-events: none;
@@ -748,8 +748,11 @@ button[aria-label]::before {
   height: auto;
   width: auto;
   max-width: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0.875rem 1.25rem;
-  background-color: var(--color-forest-300);
+  background-color: var(--color-forest-500);
   color: var(--color-text-on-forest);
   border-radius: 0.9375rem;
   box-shadow: var(--shadow);
@@ -759,6 +762,8 @@ button[aria-label]::before {
 .hero__title {
   font-weight: 600;
   font-size: 2.25rem;
+  text-align: center;
+  line-height: 1.2;
 }
 
 .title-block {

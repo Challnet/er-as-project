@@ -22,8 +22,11 @@
     height: auto;
     width: auto;
     max-width: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: rem(14) rem(20);
-    background-color: var(--color-forest-300);
+    background-color: var(--color-forest-500);
     color: var(--color-text-on-forest);
     border-radius: rem(15);
     box-shadow: var(--shadow);
@@ -35,5 +38,7 @@
   &__title {
     font-weight: 600;
     font-size: rem(36);
+    text-align: center;
+    line-height: 1.2;
   }
 }
