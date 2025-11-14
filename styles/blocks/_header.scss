@@ -11,14 +11,16 @@
 
   @keyframes scrolling-header {
     to {
-      box-shadow: 0 0 1rem 0 var(--color-dark-40);
+      box-shadow: var(--shadow);
     }
   }
 
   &__promo {
     padding-block: rem(20);
     text-align: center;
-    background-color: var(--color-dark);
+    color: var(--color-text-on-forest);
+    background-color: var(--color-forest-900);
+    box-shadow: var(--shadow);
     border-bottom: var(--border);
 
     @include mobile {
@@ -28,7 +30,8 @@
 
   &__body {
     padding-block: rem(24);
-    background-color: var(--color-dark-10);
+    background-color: var(--color-forest-700);
+    box-shadow: var(--shadow);
 
     @include mobile {
       padding-block: rem(20);
@@ -88,7 +91,7 @@
 
     &-link {
       padding: rem(14) rem(24);
-      color: var(--color-gray-50);
+      color: var(--color-muted);
 
       @include laptop {
         padding: rem(10) rem(18);
@@ -96,9 +99,10 @@
 
       &.is-active {
         font-weight: 500;
-        color: var(--color-light);
-        background-color: var(--color-dark);
-        border: rem(1) solid var(--color-dark-20);
+        color: var(--color-text-on-forest);
+        background-color: var(--color-forest-300);
+        border: rem(2) solid var(--color-forest-500);
+        box-shadow: var(--shadow);
         border-radius: rem(10);
         pointer-events: none;
       }

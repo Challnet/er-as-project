@@ -12,17 +12,36 @@
   --color-gray-50: #7e7e81;
   --color-gray-60: #98989a;
 
-  --color-accent: #ffd11a;
-
   --color-red: #ff5500;
 
+  /* Forest greens */
+  --color-forest-900: #12391f; /* very dark green - footers, overlays */
+  --color-forest-700: #18592f; /* dark green - header, nav */
+  --color-forest-500: #2c7a4d; /* primary brand green - buttons, links */
+  --color-forest-300: #7fbf8a; /* light green - accents, badges */
+
+  /* Cream backgrounds */
+  --color-cream-50: #fffdf6; /* page background */
+  --color-cream-100: #fff8e7; /* content background (cards, sections) */
+  --color-cream-200: #f1e8d0; /* raised surfaces */
+
+  /* Accent / neutrals */
+  --color-accent: #7fbf8a;
+  --color-muted: #8c8c82; /* subdued metadata text */
+  --color-text-on-cream: #11321d; /* primary text color on cream */
+  --color-text-on-forest: #ffffff; /* text on dark green */
+  --color-border: #e6e0d4; /* separators */
+
   --border: #{rem(1)} solid var(--color-dark-15);
+
+  --shadow: 0 #{rem(4)} #{rem(10)} 0 var(--color-forest-900);
 
   --font-family-base: "Inter", sans-serif;
   --font-family-accent: "Kumbh Sans", sans-serif;
 
   --container-width: #{rem(1600)};
-  --container-padding-x: #{rem(16)};
+  --container-padding-x: #{rem(32)};
+  --container-padding-y: #{rem(80)};
 
   --transition-duration: 0.2s;
 

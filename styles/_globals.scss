@@ -13,12 +13,14 @@ body {
   flex-direction: column;
   font-family: var(--font-family-base);
   letter-spacing: -0.03em;
-  color: var(--color-gray-50);
-  background-color: var(--color-dark);
+  color: var(--color-text-on-cream);
+  background-color: var(--color-cream-50);
 }
 
 main {
   flex-grow: 1;
+  padding-inline: var(--container-padding-x);
+  padding-block: var(--container-padding-y);
 }
 
 h1,
@@ -33,7 +35,7 @@ h5,
 .h5,
 h6,
 .h6 {
-  color: var(--color-light);
+  color: var(--color-text-on-cream);
 }
 
 h1,
@@ -110,8 +112,8 @@ a {
 }
 
 button {
-  background-color: var(--color-accent);
-  color: var(--color-dark);
+  background-color: var(--color-forest-300);
+  color: var(--color-text-on-forest);
 }
 
 :focus-visible {

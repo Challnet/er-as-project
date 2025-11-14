@@ -241,6 +241,34 @@ svg * {
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/IBMPlexMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/IBMPlexMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/IBMPlexMono-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/IBMPlexMono-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
   --color-light: #ffffff;
   --color-dark: #141414;
@@ -250,13 +278,29 @@ svg * {
   --color-dark-40: #666666;
   --color-gray-50: #7e7e81;
   --color-gray-60: #98989a;
-  --color-accent: #ffd11a;
   --color-red: #ff5500;
+  /* Forest greens */
+  --color-forest-900: #12391f; /* very dark green - footers, overlays */
+  --color-forest-700: #18592f; /* dark green - header, nav */
+  --color-forest-500: #2c7a4d; /* primary brand green - buttons, links */
+  --color-forest-300: #7fbf8a; /* light green - accents, badges */
+  /* Cream backgrounds */
+  --color-cream-50: #fffdf6; /* page background */
+  --color-cream-100: #fff8e7; /* content background (cards, sections) */
+  --color-cream-200: #f1e8d0; /* raised surfaces */
+  /* Accent / neutrals */
+  --color-accent: #7fbf8a;
+  --color-muted: #8c8c82; /* subdued metadata text */
+  --color-text-on-cream: #11321d; /* primary text color on cream */
+  --color-text-on-forest: #ffffff; /* text on dark green */
+  --color-border: #e6e0d4; /* separators */
   --border: 0.0625rem solid var(--color-dark-15);
+  --shadow: 0 0.25rem 0.625rem 0 var(--color-forest-900);
   --font-family-base: "Inter", sans-serif;
   --font-family-accent: "Kumbh Sans", sans-serif;
   --container-width: 100rem;
-  --container-padding-x: 1rem;
+  --container-padding-x: 2rem;
+  --container-padding-y: 5rem;
   --transition-duration: 0.2s;
 }
 @media (width <= 90.06125rem) {
@@ -306,12 +350,14 @@ body {
   flex-direction: column;
   font-family: var(--font-family-base);
   letter-spacing: -0.03em;
-  color: var(--color-gray-50);
-  background-color: var(--color-dark);
+  color: var(--color-text-on-cream);
+  background-color: var(--color-cream-50);
 }
 
 main {
   flex-grow: 1;
+  padding-inline: var(--container-padding-x);
+  padding-block: var(--container-padding-y);
 }
 
 h1,
@@ -326,7 +372,7 @@ h5,
 .h5,
 h6,
 .h6 {
-  color: var(--color-light);
+  color: var(--color-text-on-cream);
 }
 
 h1,
@@ -408,8 +454,8 @@ a[class] {
 }
 
 button {
-  background-color: var(--color-accent);
-  color: var(--color-dark);
+  background-color: var(--color-forest-300);
+  color: var(--color-text-on-forest);
 }
 
 :focus-visible {
@@ -559,13 +605,15 @@ button[aria-label]::before {
 }
 @keyframes scrolling-header {
   to {
-    box-shadow: 0 0 1rem 0 var(--color-dark-40);
+    box-shadow: var(--shadow);
   }
 }
 .header__promo {
   padding-block: 1.25rem;
   text-align: center;
-  background-color: var(--color-dark);
+  color: var(--color-text-on-forest);
+  background-color: var(--color-forest-900);
+  box-shadow: var(--shadow);
   border-bottom: var(--border);
 }
 @media (width <= 47.99875rem) {
@@ -575,7 +623,8 @@ button[aria-label]::before {
 }
 .header__body {
   padding-block: 1.5rem;
-  background-color: var(--color-dark-10);
+  background-color: var(--color-forest-700);
+  box-shadow: var(--shadow);
 }
 @media (width <= 47.99875rem) {
   .header__body {
@@ -634,7 +683,7 @@ button[aria-label]::before {
 }
 .header__menu-link {
   padding: 0.875rem 1.5rem;
-  color: var(--color-gray-50);
+  color: var(--color-muted);
 }
 @media (width <= 90.06125rem) {
   .header__menu-link {
@@ -643,9 +692,10 @@ button[aria-label]::before {
 }
 .header__menu-link.is-active {
   font-weight: 500;
-  color: var(--color-light);
-  background-color: var(--color-dark);
-  border: 0.0625rem solid var(--color-dark-20);
+  color: var(--color-text-on-forest);
+  background-color: var(--color-forest-300);
+  border: 0.125rem solid var(--color-forest-500);
+  box-shadow: var(--shadow);
   border-radius: 0.625rem;
   pointer-events: none;
 }
@@ -655,6 +705,14 @@ button[aria-label]::before {
     max-width: 18.75rem;
     align-self: center;
   }
+}
+
+.footer {
+  background-color: var(--color-forest-900);
+  color: var(--color-text-on-forest);
+}
+.footer h1 {
+  color: var(--color-text-on-forest);
 }
 
 /*# sourceMappingURL=main.css.map */
