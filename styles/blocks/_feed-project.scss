@@ -1,0 +1,34 @@
+@use "../helpers" as *;
+
+.feed-table {
+  width: 100%;
+  border-collapse: collapse;
+  th,
+  td {
+    border: 1px solid #dcdcdc;
+    padding: 18px 22px;
+    vertical-align: top;
+  }
+
+  th.feed-title {
+    width: 230px;
+    background: #f3f3f3;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: left;
+  }
+
+  td.feed-text {
+    font-size: 16px;
+    line-height: 1.55;
+    color: #333;
+
+    p{
+       font-size: 16px; 
+    }
+  }
+
+  tr:nth-child(even) {
+    background: #fafafa;
+  }
+}

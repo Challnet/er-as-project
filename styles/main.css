@@ -823,4 +823,33 @@ p {
   margin-bottom: 8px;
 }
 
+.feed-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.feed-table th,
+.feed-table td {
+  border: 1px solid #dcdcdc;
+  padding: 18px 22px;
+  vertical-align: top;
+}
+.feed-table th.feed-title {
+  width: 230px;
+  background: #f3f3f3;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: left;
+}
+.feed-table td.feed-text {
+  font-size: 16px;
+  line-height: 1.55;
+  color: #333;
+}
+.feed-table td.feed-text p {
+  font-size: 16px;
+}
+.feed-table tr:nth-child(even) {
+  background: #fafafa;
+}
+
 /*# sourceMappingURL=main.css.map */
