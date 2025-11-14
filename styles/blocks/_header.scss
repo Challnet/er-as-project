@@ -16,7 +16,7 @@
   }
 
   &__promo {
-    padding-block: rem(20);
+    padding-block: rem(14);
     text-align: center;
     color: var(--color-text-on-forest);
     background-color: var(--color-forest-900);
@@ -25,6 +25,18 @@
 
     @include mobile {
       padding-block: rem(14);
+    }
+
+    &-inner {
+      display: flex;
+      justify-content: end;
+      column-gap: 2rem;
+    }
+
+    &-link {
+      @include fluid-text(16, 14);
+
+      color: var(--color-text-on-fores);
     }
   }
 
