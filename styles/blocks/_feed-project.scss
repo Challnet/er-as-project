@@ -2,33 +2,37 @@
 
 .feed-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  box-shadow: var(--shadow);
+  border-radius: rem(15);
+  overflow: hidden;
+  margin-top: rem(30);
   th,
   td {
-    border: 1px solid #dcdcdc;
+    // border: 1px solid #dcdcdc;
+    border: 1px solid var(--color-forest-700);
     padding: 18px 22px;
-    vertical-align: top;
+    // vertical-align: top;
   }
 
   th.feed-title {
-    width: 230px;
-    background: #f3f3f3;
+    width: auto;
+    background: var(--color-forest-500);
     font-weight: 600;
-    font-size: 18px;
-    text-align: left;
+    text-align: center;
+    color: var(--color-light);
+    box-shadow: var(--shadow);
   }
 
   td.feed-text {
-    font-size: 16px;
     line-height: 1.55;
     color: #333;
+    box-shadow: var(--shadow);
 
-    p{
-       font-size: 16px; 
-    }
   }
 
   tr:nth-child(even) {
-    background: #fafafa;
+    // background: #fafafa;
+    background: var(--color-light);
   }
 }
