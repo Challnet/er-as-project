@@ -32,6 +32,15 @@
       flex-direction: column;
       align-items: center;
       row-gap: rem(20);
+      padding-inline: rem(120);
+    }
+
+    @include mobile {
+      padding-inline: rem(80);
+    }
+
+    @include mobile-s {
+      padding-inline: rem(50);
     }
   }
 
