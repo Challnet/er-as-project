@@ -1,8 +1,54 @@
-.footer {
-  background-color: var(--color-forest-900);
-  color: var(--color-text-on-forest);
+@use "../helpers" as *;
 
-  h1 {
-    color: var(--color-text-on-forest);
+.footer {
+  width: 100%;
+  color: var(--color-text-on-forest);
+  background-color: var(--color-forest-700);
+
+  &__promo {
+    height: rem(50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-forest-900);
+    box-shadow: var(--shadow-up);
+
+    &-title {
+      font-size: 16;
+
+      font-weight: 400;
+    }
+  }
+
+  &__body {
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    padding-top: rem(32);
+    padding-bottom: rem(50);
+    padding-inline: rem(150);
+  }
+
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(32);
+
+    &__title {
+      @include fluid-text(24, 18);
+
+      font-weight: 600;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      row-gap: rem(8);
+    }
+
+    &__item {
+      @include fluid-text(16, 14);
+      color: var(--color-muted);
+    }
   }
 }

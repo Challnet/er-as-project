@@ -3,7 +3,7 @@
 .icon {
   display: inline-flex;
   align-items: center;
-  column-gap: #{rem(10)};
+  column-gap: #{rem(8)};
 
   &::before {
     --size: #{rem(20)};
@@ -26,6 +26,12 @@
   &__email {
     &::before {
       background-image: url("../../icons/email.svg");
+    }
+  }
+
+  &__copyright {
+    &::before {
+      background-image: url("../../icons/copyright.svg");
     }
   }
 }

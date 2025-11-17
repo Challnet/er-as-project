@@ -15,9 +15,9 @@
   --color-red: #ff5500;
 
   /* Forest greens */
-  --color-forest-900: #12391f; /* very dark green - footers, overlays */
-  --color-forest-700: #18592f; /* dark green - header, nav */
-  --color-forest-500: #2c7a4d; /* primary brand green - buttons, links */
+  --color-forest-900: #06756a; /* very dark green - footers, overlays */
+  --color-forest-700: #358f63; /* dark green - header, nav */
+  --color-forest-500: #9dcf5e; /* primary brand green - buttons, links */
   --color-forest-300: #7fbf8a; /* light green - accents, badges */
 
   /* Cream backgrounds */
@@ -26,7 +26,7 @@
   --color-cream-200: #f1e8d0; /* raised surfaces */
 
   /* Accent / neutrals */
-  --color-accent: #7fbf8a;
+  --color-accent: #bade5b;
   --color-muted: #f3f3f0; /* subdued metadata text */
   --color-text-on-cream: #11321d; /* primary text color on cream */
   --color-text-on-forest: #ffffff; /* text on dark green */
@@ -34,7 +34,9 @@
 
   --border: #{rem(1)} solid var(--color-dark-15);
 
+  --shadow-up: 0 #{rem(-4)} #{rem(10)} 0 var(--color-forest-900);
   --shadow: 0 #{rem(4)} #{rem(10)} 0 var(--color-forest-900);
+  --shadow-light: 0 #{rem(4)} #{rem(10)} 0 var(--color-forest-700);
 
   --font-family-base: "Inter", sans-serif;
   --font-family-accent: "Kumbh Sans", sans-serif;

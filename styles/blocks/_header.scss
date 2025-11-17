@@ -21,10 +21,9 @@
     color: var(--color-text-on-forest);
     background-color: var(--color-forest-900);
     box-shadow: var(--shadow);
-    border-bottom: var(--border);
 
     @include mobile {
-      padding-block: rem(14);
+      display: none;
     }
 
     &-inner {
@@ -43,7 +42,7 @@
   &__body {
     padding-block: rem(24);
     background-color: var(--color-forest-700);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-light);
 
     @include mobile {
       padding-block: rem(20);
