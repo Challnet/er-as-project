@@ -748,10 +748,22 @@ button[aria-label]::before {
   padding-bottom: 3.125rem;
   padding-inline: 9.375rem;
 }
+@media (width <= 63.99875rem) {
+  .footer__body {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1.25rem;
+  }
+}
 .footer .contacts {
   display: flex;
   flex-direction: column;
   row-gap: 2rem;
+}
+@media (width <= 47.99875rem) {
+  .footer .contacts {
+    row-gap: 1.25rem;
+  }
 }
 .footer .contacts__title {
   font-size: clamp(1.125rem, 1.0294117647rem + 0.3921568627vw, 1.5rem);
@@ -806,6 +818,16 @@ button[aria-label]::before {
   text-align: center;
   line-height: 1.2;
 }
+@media (width <= 47.99875rem) {
+  .hero__title {
+    font-size: 1.5rem;
+  }
+}
+@media (width <= 30.06125rem) {
+  .hero__title {
+    font-size: 1rem;
+  }
+}
 
 .title-block {
   text-align: center;
@@ -814,9 +836,10 @@ button[aria-label]::before {
   font-size: 3.125rem;
   font-weight: 700;
 }
-
-p {
-  font-size: 1.5625rem;
+@media (width <= 47.99875rem) {
+  .title-block h1 {
+    font-size: 2.125rem;
+  }
 }
 
 .gallery {
@@ -840,6 +863,12 @@ p {
   box-sizing: border-box;
   box-shadow: var(--shadow);
   border-radius: 0.9375rem;
+}
+@media (width <= 47.99875rem) {
+  .gallery-item {
+    width: 100%;
+    height: auto;
+  }
 }
 .gallery-item img {
   width: 100%;
@@ -883,9 +912,15 @@ p {
   border: 1px solid var(--color-forest-700);
   padding: 18px 22px;
 }
+@media (width <= 47.99875rem) {
+  .feed-table th,
+  .feed-table td {
+    padding: 0.625rem 0.625rem;
+  }
+}
 .feed-table th.feed-title {
   width: auto;
-  background: var(--color-forest-500);
+  background: var(--color-forest-900);
   font-weight: 600;
   text-align: center;
   color: var(--color-light);
