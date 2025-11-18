@@ -2,9 +2,14 @@
 
 .title-block {
   text-align: center;
+
   h1 {
     font-size: rem(50);
     font-weight: 700;
+
+    @include mobile {
+      font-size: rem(34);
+    }
   }
 }
 
@@ -13,7 +18,7 @@
   height: 100%;
   overflow: auto;
   padding: 10px;
-  justify-content: center; 
+  justify-content: center;
 
   display: flex;
   flex-wrap: wrap;
@@ -29,8 +34,12 @@
   position: relative;
   box-sizing: border-box;
   box-shadow: var(--shadow);
-  border-radius: rem(15); 
- 
+  border-radius: rem(15);
+
+  @include mobile {
+    width: 100%;
+    height: auto;
+  }
 
   img {
     width: 100%;
@@ -46,7 +55,7 @@
   padding: 0 15px;
 
   h2 {
-     font-size: rem(20);
+    font-size: rem(20);
     font-weight: 600;
     margin-bottom: 15px;
     color: #333;
@@ -64,5 +73,3 @@
     }
   }
 }
-
-

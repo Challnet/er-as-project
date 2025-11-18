@@ -13,6 +13,10 @@
     border: 1px solid var(--color-forest-700);
     padding: 18px 22px;
     // vertical-align: top;
+
+    @include mobile {
+      padding: rem(10) rem(10);
+    }
   }
 
   th.feed-title {
@@ -28,7 +32,6 @@
     line-height: 1.55;
     color: #333;
     box-shadow: var(--shadow);
-
   }
 
   tr:nth-child(even) {

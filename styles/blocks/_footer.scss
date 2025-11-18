@@ -27,12 +27,31 @@
     padding-top: rem(32);
     padding-bottom: rem(50);
     padding-inline: rem(150);
+
+    @include tablet {
+      flex-direction: column;
+      align-items: center;
+      row-gap: rem(20);
+      padding-inline: rem(120);
+    }
+
+    @include mobile {
+      padding-inline: rem(80);
+    }
+
+    @include mobile-s {
+      padding-inline: rem(50);
+    }
   }
 
   .contacts {
     display: flex;
     flex-direction: column;
     row-gap: rem(32);
+
+    @include mobile {
+      row-gap: rem(20);
+    }
 
     &__title {
       @include fluid-text(24, 18);
