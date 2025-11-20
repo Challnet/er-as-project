@@ -8,3 +8,5 @@ define("DB_PORT", "3306");
 define("DB_NAME", "auth-system");
 define("DB_USERNAME", "root");
 define("DB_PASSWORD", "");
+
+require_once __DIR__ . "/../vendor/autoload.php";
