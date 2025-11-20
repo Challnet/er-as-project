@@ -33,6 +33,7 @@
   --color-border: #e6e0d4; /* separators */
 
   --border: #{rem(1)} solid var(--color-dark-15);
+  --border-radius: #{rem(15)};
 
   --shadow-up: 0 #{rem(-4)} #{rem(10)} 0 var(--color-forest-900);
   --shadow: 0 #{rem(4)} #{rem(10)} 0 var(--color-forest-900);

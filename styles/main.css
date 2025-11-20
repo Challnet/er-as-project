@@ -29,16 +29,7 @@ body,
   Убираем внешние отступы вертикали нужным тегам,
   у которых есть атрибут class
  */
-:where(h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol,
-dl):where([class]) {
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
   margin-block: 0;
 }
 
@@ -104,14 +95,14 @@ button {
 
 html {
   /**
-   Пригодится в большинстве ситуаций
-   (когда, например, нужно будет "прижать" футер к низу сайта)
-  */
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
   height: 100%;
   /**
-   Убираем скачок интерфейса по горизонтали
-   при появлении / исчезновении скроллбара
-  */
+    Убираем скачок интерфейса по горизонтали
+    при появлении / исчезновении скроллбара
+   */
   scrollbar-gutter: stable;
 }
 
@@ -125,13 +116,13 @@ html,
 
 body {
   /**
-   Пригодится в большинстве ситуаций
-   (когда, например, нужно будет "прижать" футер к низу сайта)
-  */
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
   min-height: 100%;
   /**
-   Унифицированный интерлиньяж
-  */
+    Унифицированный интерлиньяж
+   */
   line-height: 1.5;
 }
 
@@ -155,8 +146,7 @@ label {
   (за исключением тех, у которых уже указан
   атрибут fill со значением 'none' или начинается с 'url')
  */
-:where([fill]:not([fill=none],
-[fill^=url])) {
+:where([fill]:not([fill=none], [fill^=url])) {
   fill: currentColor;
 }
 
@@ -165,8 +155,7 @@ label {
   (за исключением тех, у которых уже указан
   атрибут stroke со значением 'none')
  */
-:where([stroke]:not([stroke=none],
-[stroke^=url])) {
+:where([stroke]:not([stroke=none], [stroke^=url])) {
   stroke: currentColor;
 }
 
@@ -295,6 +284,7 @@ svg * {
   --color-text-on-forest: #ffffff; /* text on dark green */
   --color-border: #e6e0d4; /* separators */
   --border: 0.0625rem solid var(--color-dark-15);
+  --border-radius: 0.9375rem;
   --shadow-up: 0 -0.25rem 0.625rem 0 var(--color-forest-900);
   --shadow: 0 0.25rem 0.625rem 0 var(--color-forest-900);
   --shadow-light: 0 0.25rem 0.625rem 0 var(--color-forest-700);
@@ -515,11 +505,12 @@ button[aria-label]::before {
   justify-content: center;
   padding: 1.125rem 1.5rem;
   font-size: 1.125rem;
-  color: var(--color-gray-60);
-  background-color: var(--color-dark);
+  color: var(--color-light);
+  background-color: var(--color-forest-900);
   white-space: nowrap;
-  border: var(--border);
-  border-radius: 0.75rem;
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
 }
 @media (width <= 90.06125rem) {
   .button {
@@ -531,14 +522,14 @@ button[aria-label]::before {
 @media (any-hover: hover) {
   .button:hover {
     color: var(--color-accent);
-    background-color: var(--color-dark-10);
+    background-color: var(--color-forest-700);
     border-color: var(--color-accent);
   }
 }
 @media (any-hover: none) {
   .button:active {
     color: var(--color-accent);
-    background-color: var(--color-dark-10);
+    background-color: var(--color-forest-700);
     border-color: var(--color-accent);
   }
 }
@@ -944,6 +935,92 @@ button[aria-label]::before {
 }
 .feed-table tr:nth-child(even) {
   background: var(--color-light);
+}
+
+.auth-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2rem;
+}
+
+.card {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 2rem;
+  color: var(--color-light);
+  background: var(--color-forest-700);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+.card__title {
+  margin-bottom: 2rem;
+  color: var(--color-light);
+}
+.card .button {
+  margin-top: 2rem;
+}
+.card__label {
+  position: relative;
+}
+.card__label-name {
+  position: absolute;
+  top: -75%;
+  left: -3%;
+  font-weight: 500;
+  pointer-events: none;
+}
+.card__input {
+  box-shadow: var(--shadow);
+  padding-inline: 0.5rem;
+}
+
+form {
+  min-width: 500px;
+  max-width: 700px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.avatar {
+  width: 300px;
+  height: 300px;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  padding: 100px;
+}
+
+.notice {
+  padding: 10px;
+  border-radius: 6px;
+  margin: 20px 0;
+}
+
+.notice.error {
+  border: 2px solid #762c2c;
+  background: #f3d3d3;
+  color: #762c2c;
+}
+
+.notice.success {
+  border: 2px solid #2c742b;
+  background: #e1fee3;
+  color: #2c742b;
 }
 
 /*# sourceMappingURL=main.css.map */

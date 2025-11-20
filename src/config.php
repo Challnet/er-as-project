@@ -1,6 +1,6 @@
 <?php
 
-define("BASE_URL", "/auth-system");
+define("BASE_URL", "/dudkin-project");
 
 // Database constants
 define("DB_HOST", "localhost");

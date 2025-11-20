@@ -4,40 +4,48 @@ session_start();
 
 require_once __DIR__ .  "/config.php";
 
-function redirect(string $path) {
+function redirect(string $path)
+{
   header(header: "Location: " . BASE_URL . $path);
   die();
 }
 
-function setValidationError(string $fieldName, string $errorMessage) {
+function setValidationError(string $fieldName, string $errorMessage)
+{
   $_SESSION["validation"][$fieldName] = $errorMessage;
 }
 
-function hasValidationError(string $fieldName): bool {
+function hasValidationError(string $fieldName): bool
+{
   return isset($_SESSION["validation"][$fieldName]);
 }
 
-function setValidationErrorAttribute(string $fieldName) {
+function setValidationErrorAttribute(string $fieldName)
+{
   return isset($_SESSION["validation"][$fieldName]) ? "aria-invalid='true'" : "";
 }
 
-function getValidationErrorMessage(string $fieldName): string {
+function getValidationErrorMessage(string $fieldName): string
+{
   $message =  $_SESSION["validation"][$fieldName] ?? "";
   unset($_SESSION["validation"][$fieldName]);
   return $message;
 }
 
-function setOldValue(string $key, mixed $value): void {
+function setOldValue(string $key, mixed $value): void
+{
   $_SESSION["old"][$key] = $value;
 }
 
-function getOldValue(string $key) {
+function getOldValue(string $key)
+{
   $value = $_SESSION["old"][$key] ?? "";
   unset($_SESSION["old"][$key]);
   return $value;
 }
 
-function uploadFile(array $file, string $prefix): string {
+function uploadFile(array $file, string $prefix): string
+{
   $uploadPath = __DIR__ . "/../uploads";
 
   if (!is_dir($uploadPath)) {
@@ -54,29 +62,34 @@ function uploadFile(array $file, string $prefix): string {
   return "uploads/$fileName";
 }
 
-function setMessage(string $key, string $message): void {
+function setMessage(string $key, string $message): void
+{
   $_SESSION["message"][$key] = $message;
 }
 
-function hasMessage(string $key): bool {
+function hasMessage(string $key): bool
+{
   return isset($_SESSION["message"][$key]);
 }
 
-function getMessage(string $key): string {
+function getMessage(string $key): string
+{
   $message = $_SESSION["message"][$key] ?? "";
   unset($_SESSION["message"][$key]);
   return $message;
 }
 
-function getPDO(): PDO {
+function getPDO(): PDO
+{
   try {
     return new PDO("mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";charset=utf8;dbname=" . DB_NAME, DB_USERNAME, DB_PASSWORD);
-  } catch(PDOException $error) {
+  } catch (PDOException $error) {
     die("Connection error: " . $error->getMessage());
   }
 }
 
-function findUser(string $email): array|bool {
+function findUser(string $email): array|bool
+{
   $pdo = getPDO();
 
   $query = "SELECT * FROM users WHERE `email` = :email";
@@ -89,7 +102,8 @@ function findUser(string $email): array|bool {
   return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-function findCurrentUser(): array|bool {
+function findCurrentUser(): array|bool
+{
   $pdo = getPDO();
 
   if (!isset($_SESSION["user"])) {
@@ -108,18 +122,21 @@ function findCurrentUser(): array|bool {
   return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-function logout() {
+function logout()
+{
   unset($_SESSION["user"]["id"]);
   redirect("/");
 }
 
-function checkAuth() {
+function checkAuth()
+{
   if (!isset($_SESSION["user"]["id"])) {
-    redirect("/");
+    redirect("/login.php");
   }
 }
 
-function checkGuest() {
+function checkGuest()
+{
   if (isset($_SESSION["user"]["id"])) {
     redirect("/home.php");
   }

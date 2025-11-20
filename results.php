@@ -1,3 +1,5 @@
+<?php require_once __DIR__ . "/src/views/partials/isUserLoggedIn.php" ?>
+
 <?php require_once __DIR__ . "/src/views/partials/head.php" ?>
 
 <?php

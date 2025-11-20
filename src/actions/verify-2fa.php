@@ -22,5 +22,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     redirect("/home.php");
     exit;
-} 
-?>
+}

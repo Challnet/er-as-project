@@ -71,6 +71,27 @@
                   Результаты НИР
                 </a>
               </li>
+
+              <?php if (!isset($_SESSION['user']['id'])): ?>
+                <li class="header__menu-item">
+                  <a
+                    href="./login.php"
+                    class="header__menu-link"
+                    data-js-header-menu-link>
+                    Авторизация
+                  </a>
+                </li>
+              <?php endif ?>
+              <?php if (isset($_SESSION['user']['id'])): ?>
+                <li class="header__menu-item">
+                  <a
+                    href="./home.php"
+                    class="header__menu-link"
+                    data-js-header-menu-link>
+                    Личный кабинет
+                  </a>
+                </li>
+              <?php endif ?>
             </ul>
           </nav>
           <!-- <a href="/" class="header__contact-us-link button button__accent">

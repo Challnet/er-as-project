@@ -1,0 +1,93 @@
+@use "../helpers" as *;
+
+.auth-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: rem(32);
+}
+
+.card {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: rem(32);
+  color: var(--color-light);
+  background: var(--color-forest-700);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+
+  &__title {
+    margin-bottom: rem(32);
+    color: var(--color-light);
+  }
+
+  .button {
+    margin-top: rem(32);
+  }
+
+  &__label {
+    position: relative;
+
+    &-name {
+      position: absolute;
+      top: -75%;
+      left: -3%;
+      font-weight: 500;
+
+      pointer-events: none;
+    }
+  }
+
+  &__input {
+    box-shadow: var(--shadow);
+    padding-inline: rem(8);
+  }
+}
+
+form {
+  min-width: 500px;
+  max-width: 700px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(32);
+}
+
+.avatar {
+  width: 300px;
+  height: 300px;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  padding: 100px;
+}
+
+.notice {
+  padding: 10px;
+  border-radius: 6px;
+  margin: 20px 0;
+}
+
+.notice.error {
+  border: 2px solid #762c2c;
+  background: #f3d3d3;
+  color: #762c2c;
+}
+
+.notice.success {
+  border: 2px solid #2c742b;
+  background: #e1fee3;
+  color: #2c742b;
+}
