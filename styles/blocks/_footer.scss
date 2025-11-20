@@ -6,7 +6,8 @@
   background-color: var(--color-forest-700);
 
   &__promo {
-    height: rem(50);
+    height: min-rem(50);
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,6 +58,8 @@
       @include fluid-text(24, 18);
 
       font-weight: 600;
+      white-space: normal;
+      overflow-wrap: break-word;
     }
 
     &__list {

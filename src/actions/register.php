@@ -14,23 +14,23 @@ $avatar = $_FILES["avatar"]  ?? null;
 
 //Validation
 if (empty($username)) {
-  setValidationError("username", "Username is empty");
+  setValidationError("username", "Пустое поле");
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  setValidationError("email", "Email is incorrect");
+  setValidationError("email", "Не верный формат email");
 }
 
 if (empty($password)) {
-  setValidationError("password", "Password is empty");
+  setValidationError("password", "Пароль пустой");
 }
 
 if (!empty($password) && strlen($password) < 6) {
-  setValidationError("password", "Password must have at least 6 characters");
+  setValidationError("password", "Пароль > 6 символов");
 }
 
 if ($password !== $passwordConfirmation) {
-  setValidationError("password", "Paswords are not matched");
+  setValidationError("password", "Пароли не совпадают");
 }
 
 if (!empty($avatar) && $avatar["error"] === 0) {
@@ -41,11 +41,11 @@ if (!empty($avatar) && $avatar["error"] === 0) {
   ];
 
   if (!in_array($avatar["type"], $types)) {
-    setValidationError("avatar", "Avatar image must be only jpeg, jpg or png types");
+    setValidationError("avatar", "Аватарка должна быть jpeg, jpg или png форматов");
   }
 
   if (($avatar["size"] / 1000000) >= 1) {
-    setValidationError("avatar", "Avatar image must be less than 1MB size");
+    setValidationError("avatar", "Аватарка должна весить не более 1MB");
   }
 }
 

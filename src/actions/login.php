@@ -27,7 +27,7 @@ if (!isset($_SESSION["attempts"])) {
 if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
   setOldValue("email", $email);
   setValidationError("email", "Неверный формат email");
-  setMessage("error", "Validation error");
+  setMessage("error", "Ошибка валидации");
   redirect("/login.php");
 }
 
@@ -54,12 +54,14 @@ if (!$user) {
 if (!password_verify($password, $user["password"])) {
   $_SESSION['attempts']++;
 
-  setMessage("error", "Пароль не верный");
+  setMessage("error", "Пароль не верный. Попытка {$_SESSION['attempts']} из $maxAttempts.");
 
   if ($_SESSION["attempts"] >= $maxAttempts) {
     $_SESSION['lock_time'] = time();
-    setMessage("error", "Слишком много использованных попыток. Аккаунт заблокирован на 5 минут.");
+    setMessage("error", "Лимит попыток для входа в аккаунт исчерпан. Аккаунт заблокирован на 5 минут.");
   }
+
+  setOldValue("email", $email);
 
   redirect("/login.php");
   exit();

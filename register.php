@@ -27,12 +27,12 @@ require_once __DIR__ . "/src/views/partials/hero.php"
         type="text"
         id="username"
         name="username"
-        placeholder="alexandr_kushnir"
+        placeholder="username"
         value="<?php echo getOldValue("username") ?>"
         <?php echo setValidationErrorAttribute("username") ?> />
 
       <?php if (hasValidationError("username")): ?>
-        <small><?php echo getValidationErrorMessage("username") ?></small>
+        <small class="card__message"><?php echo getValidationErrorMessage("username") ?></small>
       <?php endif; ?>
 
 
@@ -46,27 +46,15 @@ require_once __DIR__ . "/src/views/partials/hero.php"
         type="text"
         id="email"
         name="email"
-        placeholder="alexandrkushnir02@gmail.com"
+        placeholder="username@gmail.com"
         value="<?php echo getOldValue("email") ?>"
         <?php echo setValidationErrorAttribute("email") ?> />
 
       <?php if (hasValidationError("email")): ?>
-        <small><?php echo getValidationErrorMessage("email") ?></small>
+        <small class="card__message"><?php echo getValidationErrorMessage("email") ?></small>
       <?php endif; ?>
 
     </label>
-
-    <label for="avatar">Изображение профиля
-      <input
-        type="file"
-        id="avatar"
-        name="avatar"
-        <?php echo setValidationErrorAttribute('avatar'); ?>>
-      <?php if (hasValidationError('avatar')): ?>
-        <small><?php echo getValidationErrorMessage('avatar'); ?></small>
-      <?php endif; ?>
-    </label>
-
 
     <div class="grid">
       <label class="card__label" for="password">
@@ -81,7 +69,7 @@ require_once __DIR__ . "/src/views/partials/hero.php"
           <?php echo setValidationErrorAttribute("password") ?> />
 
         <?php if (hasValidationError("password")): ?>
-          <small><?php echo getValidationErrorMessage("password") ?></small>
+          <small class="card__message"><?php echo getValidationErrorMessage("password") ?></small>
         <?php endif; ?>
 
       </label>
@@ -104,6 +92,22 @@ require_once __DIR__ . "/src/views/partials/hero.php"
         I accept all the terms
       </label>
     </fieldset> -->
+
+
+
+    <label class="card__label card__label-avatar" for="avatar">Изображение профиля
+
+
+      <input
+        type="file"
+        id="avatar"
+        name="avatar"
+        class="card__input-avatar"
+        <?php echo setValidationErrorAttribute('avatar'); ?>>
+      <?php if (hasValidationError('avatar')): ?>
+        <small class="card__message card__message-avatar"><?php echo getValidationErrorMessage('avatar'); ?></small>
+      <?php endif; ?>
+    </label>
 
     <button class="button" type="submit" id="submit">Продолжить</button>
   </form>

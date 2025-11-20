@@ -40,9 +40,21 @@
         </div>
       </div>
       <div class="footer__promo">
-        <span>
-          <strong class="footer__promo-title icon icon__copyright">Индивидуальный предприниматель «Ер-Ас»</strong>
-        </span>
+        <p class="container">
+          <strong class="footer__promo-title icon icon__copyright">
+            Индивидуальный предприниматель «Ер&nbsp;-&nbsp;Ас»&nbsp;&nbsp;&nbsp;2025
+            <?php
+
+            $startYear = 2025;
+            $currentYear = (int)date("Y");
+
+            if ($currentYear > $startYear) {
+              echo " - " . $currentYear;
+            }
+
+            ?>
+          </strong>
+        </p>
       </div>
     </footer>
     </body>

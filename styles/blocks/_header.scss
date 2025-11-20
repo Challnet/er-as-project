@@ -53,6 +53,10 @@
       justify-content: space-between;
       align-items: center;
       column-gap: 1rem;
+
+      @include laptop {
+        column-gap: 0.5rem;
+      }
     }
   }
 
@@ -69,7 +73,12 @@
       justify-content: center;
       row-gap: 3rem;
       padding: 1rem;
-      background-color: var(--color-dark-10);
+      background: linear-gradient(
+        135deg,
+        var(--color-forest-900),
+        var(--color-forest-700),
+        var(--color-forest-500)
+      );
       transition-duration: var(--transition-duration);
 
       &:not(.is-active) {
@@ -91,7 +100,7 @@
       column-gap: rem(16);
 
       @include laptop {
-        column-gap: rem(6);
+        column-gap: rem(4);
       }
 
       @include mobile {

@@ -19,19 +19,19 @@
 
   &__phone {
     &::before {
-      background-image: url("../../icons/phone.svg");
+      background-image: url("../icons/phone.svg");
     }
   }
 
   &__email {
     &::before {
-      background-image: url("../../icons/email.svg");
+      background-image: url("../icons/email.svg");
     }
   }
 
   &__copyright {
     &::before {
-      background-image: url("../../icons/copyright.svg");
+      background-image: url("../icons/copyright.svg");
     }
   }
 }

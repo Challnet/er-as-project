@@ -40,7 +40,7 @@ require_once __DIR__ . "/src/views/partials/hero.php"
         <?php echo setValidationErrorAttribute("email") ?> />
 
       <?php if (hasValidationError("email")): ?>
-        <small><?php echo getValidationErrorMessage("email") ?></small>
+        <small class="card__message"><?php echo getValidationErrorMessage("email") ?></small>
       <?php endif; ?>
 
     </label>
