@@ -1,0 +1,39 @@
+@use "../helpers" as *;
+
+.home-page {
+  .avatar {
+    width: rem(200);
+    height: rem(200);
+    display: block;
+    object-fit: cover;
+    background-color: var(--color-muted);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: rem(20);
+
+    &__greeting {
+      @include fluid-text(32, 22);
+
+      text-align: center;
+      font-weight: 500;
+      line-height: 1.2;
+      white-space: normal;
+      overflow-wrap: break-word;
+
+      &-username {
+        color: var(--color-cream-200);
+      }
+    }
+
+    &__form {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

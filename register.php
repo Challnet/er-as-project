@@ -56,6 +56,18 @@ require_once __DIR__ . "/src/views/partials/hero.php"
 
     </label>
 
+    <label for="avatar">Изображение профиля
+      <input
+        type="file"
+        id="avatar"
+        name="avatar"
+        <?php echo setValidationErrorAttribute('avatar'); ?>>
+      <?php if (hasValidationError('avatar')): ?>
+        <small><?php echo getValidationErrorMessage('avatar'); ?></small>
+      <?php endif; ?>
+    </label>
+
+
     <div class="grid">
       <label class="card__label" for="password">
         <span class="card__label-name">
@@ -93,7 +105,7 @@ require_once __DIR__ . "/src/views/partials/hero.php"
       </label>
     </fieldset> -->
 
-    <button class="button" type="submit" id="submit" disabled>Продолжить</button>
+    <button class="button" type="submit" id="submit">Продолжить</button>
   </form>
 
   <p>У меня уже есть <a href="./login.php">аккаунт</a></p>

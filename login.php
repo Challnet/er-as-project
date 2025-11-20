@@ -57,7 +57,7 @@ require_once __DIR__ . "/src/views/partials/hero.php"
         placeholder="******" />
     </label>
 
-    <button class="button" type="submit" id="submit">Continue</button>
+    <button class="button" type="submit" id="submit">Продолжить</button>
   </form>
 
   <p>У меня еще нет <a href="./register.php">аккаунта</a></p>

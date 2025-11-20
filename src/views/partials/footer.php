@@ -1,14 +1,13 @@
     <footer class="footer">
       <div class="footer__body container">
         <div class="footer__logo">
-          <a href="/" class="logo" aria-label="Home" title="Home">
+          <a href="./index.php" class="logo" aria-label="Home" title="Home">
             <img
               src="./icons/logo.svg"
               alt=""
               class="logo__image"
               width="179"
-              height="50"
-            />
+              height="50" />
           </a>
         </div>
         <div class="contacts">
@@ -42,11 +41,10 @@
       </div>
       <div class="footer__promo">
         <span>
-          <strong class="footer__promo-title icon icon__copyright"
-            >Индивидуальный предприниматель «Ер-Ас»</strong
-          >
+          <strong class="footer__promo-title icon icon__copyright">Индивидуальный предприниматель «Ер-Ас»</strong>
         </span>
       </div>
     </footer>
-  </body>
-</html>
+    </body>
+
+    </html>

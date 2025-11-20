@@ -945,6 +945,7 @@ button[aria-label]::before {
 }
 
 .card {
+  max-width: 37.5rem;
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -952,7 +953,7 @@ button[aria-label]::before {
   align-items: center;
   row-gap: 2rem;
   color: var(--color-light);
-  background: var(--color-forest-700);
+  background: linear-gradient(135deg, var(--color-forest-900), var(--color-forest-700), var(--color-forest-500));
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
 }
@@ -989,22 +990,6 @@ form {
   row-gap: 2rem;
 }
 
-.avatar {
-  width: 300px;
-  height: 300px;
-  display: block;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 20px;
-  padding: 100px;
-}
-
 .notice {
   padding: 10px;
   border-radius: 6px;
@@ -1021,6 +1006,37 @@ form {
   border: 2px solid #2c742b;
   background: #e1fee3;
   color: #2c742b;
+}
+
+.home-page .avatar {
+  width: 12.5rem;
+  height: 12.5rem;
+  display: block;
+  object-fit: cover;
+  background-color: var(--color-muted);
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+}
+.home-page .home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.25rem;
+}
+.home-page .home__greeting {
+  font-size: clamp(1.375rem, 1.2156862745rem + 0.6535947712vw, 2rem);
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.home-page .home__greeting-username {
+  color: var(--color-cream-200);
+}
+.home-page .home__form {
+  display: flex;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=main.css.map */

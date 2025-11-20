@@ -35,8 +35,8 @@ if ($password !== $passwordConfirmation) {
 
 if (!empty($avatar) && $avatar["error"] === 0) {
   $types = [
-    "image/jpeg", 
-    "image/jpg", 
+    "image/jpeg",
+    "image/jpg",
     "image/png"
   ];
 
@@ -56,13 +56,13 @@ if (!empty($_SESSION["validation"])) {
   // echo "<pre>";
   //   print_r($avatar);
   // echo "</pre>";
-  
 
-if (!empty($_SESSION["validation"])) {
-      echo "<pre>";
-        print_r($_SESSION["validation"]);
-      echo "</pre>";
-    }
+
+  if (!empty($_SESSION["validation"])) {
+    echo "<pre>";
+    print_r($_SESSION["validation"]);
+    echo "</pre>";
+  }
 
   redirect("/register.php");
 }
@@ -92,4 +92,4 @@ try {
 }
 
 // Redirect to Sign In page
-redirect("/index.php");
+redirect("/login.php");

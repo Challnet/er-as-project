@@ -28,7 +28,7 @@
     </div>
     <div class="header__body">
       <div class="header__body-inner container">
-        <a href="/" class="header__logo logo" aria-label="Home" title="Home">
+        <a href="./index.php" class="header__logo logo" aria-label="Home" title="Home">
           <img
             src="./icons/logo.svg"
             alt=""
