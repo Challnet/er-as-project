@@ -1,0 +1,73 @@
+@use "../helpers" as *;
+
+.years-list {
+  .year-item {
+    margin: rem(4) rem(150);
+    background: #005b5f;
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 50%;
+
+    .year-button {
+      width: 100%;
+      background: #005b5f;
+      color: #fff;
+      border: none;
+      padding: rem(15) rem(20);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+
+      .arrow {
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid white;
+        border-bottom: 2px solid white;
+        transform: rotate(45deg);
+        transition: .3s;
+      }
+    }
+
+    &.open .year-button .arrow {
+      transform: rotate(-135deg);
+    }
+
+    .year-content {
+      background: #ffffff10;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  }
+
+  .add-result-btn {
+    display: inline-block;
+    background: #057a6e;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background: #025c53;
+    }
+  }
+
+  .entry-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+
+    .edit-btn, .delete-btn {
+      cursor: pointer;
+      opacity: .7;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
