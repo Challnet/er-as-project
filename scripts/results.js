@@ -11,11 +11,9 @@ class ResultsManager {
     this.bindDeleteButtons();
   }
 
-  /** --- Добавление записи --- */
   bindCreateButtons() {
     document.querySelectorAll(this.selectors.addButton).forEach(btn => {
       btn.addEventListener("click", async () => {
-
         const year = btn.dataset.year;
 
         const response = await fetch("src/actions/create-result.php", {
@@ -27,7 +25,7 @@ class ResultsManager {
 
         if (result.status === "success") {
           this.showToast("Запись создана");
-          setTimeout(() => window.location.reload(), 1000);
+          setTimeout(() => window.location.reload(), 900);
         } else {
           this.showToast(result.message, true);
         }
@@ -35,7 +33,6 @@ class ResultsManager {
     });
   }
 
-  /** --- Удаление --- */
   bindDeleteButtons() {
     document.addEventListener("click", async (event) => {
       if (!event.target.matches(this.selectors.deleteButton)) return;
@@ -61,7 +58,6 @@ class ResultsManager {
     });
   }
 
-  /** --- Toast уведомления --- */
   createToastContainer() {
     if (!document.getElementById(this.selectors.toastContainerId)) {
       const container = document.createElement("div");
@@ -74,8 +70,9 @@ class ResultsManager {
     const container = document.getElementById(this.selectors.toastContainerId);
     const toast = document.createElement("div");
 
-    toast.className = "toast-message" + (isError ? " error" : "");
+    toast.className = "toast-message" + (isError ? " error" : " success");
     toast.textContent = message;
+
     container.appendChild(toast);
 
     requestAnimationFrame(() => toast.classList.add("show"));
@@ -83,8 +80,9 @@ class ResultsManager {
     setTimeout(() => {
       toast.classList.remove("show");
       setTimeout(() => toast.remove(), 300);
-    }, 3000);
+    }, 4000);
   }
 }
+
 
 export default ResultsManager;

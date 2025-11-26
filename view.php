@@ -48,36 +48,35 @@ if (!$entry) {
 
     <hr>
 
-    <a class="edit-btn" href="edit.php?year=<?= $year ?>&id=<?= $entry['id'] ?>">✏ Редактировать</a>
     <a href="service.php" class="back-btn">⬅ Вернуться</a>
 
     <button id="open-modal-btn" class="add-content-btn">
-    ➕ Добавить
-</button>
+        ➕ Добавить
+    </button>
 
 
-<!-- ==== MODAL ==== -->
-<div id="content-modal" class="modal hidden">
-    <div class="modal-window">
+    <!-- ==== MODAL ==== -->
+    <div id="content-modal" class="modal hidden">
+        <div class="modal-window">
 
-        <button class="modal-close">✖</button>
-        <h3>Добавить файл или текст</h3>
+            <button class="modal-close">✖</button>
+            <h3>Добавить файл или текст</h3>
 
-        <form action="src/actions/save-entry.php" method="POST" enctype="multipart/form-data">
+            <form action="src/actions/save-entry.php" method="POST" enctype="multipart/form-data">
 
-            <input type="hidden" name="year" value="<?= $year ?>">
-            <input type="hidden" name="id" value="<?= $id ?>">
+                <input type="hidden" name="year" value="<?= $year ?>">
+                <input type="hidden" name="id" value="<?= $id ?>">
 
-            <label>Текст (необязательно):</label>
-            <textarea name="content" rows="6"></textarea>
+                <label>Текст (необязательно):</label>
+                <textarea name="content" rows="6"></textarea>
 
-            <label>Файл (необязательно):</label>
-            <input type="file" name="file">
+                <label>Файл (необязательно):</label>
+                <input type="file" name="file">
 
-            <button type="submit" class="save-btn">💾 Сохранить</button>
-        </form>
+                <button type="submit" class="save-btn">Сохранить</button>
+            </form>
+        </div>
     </div>
-</div>
 
 
 </main>

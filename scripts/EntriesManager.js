@@ -11,7 +11,6 @@ class EntriesManager {
     this.bindCreateButtons();
   }
 
-  /** -------------------- Удаление -------------------- */
   bindDeleteButtons() {
     document.addEventListener("click", (event) => {
       if (!event.target.matches(this.selectors.deleteButton)) return;
@@ -54,7 +53,6 @@ class EntriesManager {
     setTimeout(() => element.remove(), 300);
   }
 
-  /** -------------------- Создание -------------------- */
   bindCreateButtons() {
     document.querySelectorAll(this.selectors.createButton).forEach(btn => {
       btn.addEventListener("click", async () => {
@@ -71,7 +69,7 @@ class EntriesManager {
         if (data.status === "success") {
           this.showToast("Создано новое объявление");
 
-          setTimeout(() => location.reload(), 1200); // чтобы анимация toast показалась
+          setTimeout(() => location.reload(), 1200);
         } else {
           this.showToast(data.message, true);
         }

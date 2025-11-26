@@ -1,33 +1,45 @@
 class EntrySave {
   constructor() {
-    this.form = document.querySelector("#content-modal form");
-    if (!this.form) return;
+    this.forms = document.querySelectorAll(".modal form");
+
+    if (!this.forms.length) return;
 
     this.bindSubmit();
   }
 
   bindSubmit() {
-    this.form.addEventListener("submit", async (event) => {
-      event.preventDefault();
+    this.forms.forEach(form => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
 
-      const formData = new FormData(this.form);
+        const formData = new FormData(form);
 
-      const response = await fetch(this.form.action, {
-        method: "POST",
-        body: formData
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData
+        });
+
+        let result;
+
+        try {
+          result = await response.json();
+        } catch {
+          this.showToast("Ошибка сервера — не получен JSON", true);
+          return;
+        }
+
+        if (result.status === "success") {
+          this.showToast("Сохранено");
+
+          setTimeout(() => {
+
+            window.location.href = result.redirect ?? "results.php";
+          }, 1200);
+
+        } else {
+          this.showToast(result.message || "Ошибка сохранения", true);
+        }
       });
-
-      const result = await response.json();
-
-      if (result.status === "success") {
-        this.showToast("Запись успешно сохранена");
-
-        setTimeout(() => {
-          window.location.href = "service.php";
-        }, 1800);
-      } else {
-        this.showToast(result.message || "Ошибка сохранения", true);
-      }
     });
   }
 

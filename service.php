@@ -16,6 +16,13 @@ $years = ["2027", "2026", "2025"];
         </h1>
     </div>
 
+    <?php if (!isset($_SESSION['user'])): ?>
+        <div class="auth-warning">
+            Чтобы добавлять или изменять данные — вы должны 
+            <a href="login.php">авторизоваться</a>.
+        </div>
+    <?php endif; ?>
+
     <?php if (isset($_SESSION["message"])): ?>
         <div class="alert <?= key($_SESSION['message']) ?>">
             <?= reset($_SESSION["message"]) ?>
@@ -59,9 +66,6 @@ $years = ["2027", "2026", "2025"];
                                     <a href="view.php?year=<?= $year ?>&id=<?= $item['id'] ?>" class="entry-link">
                                         <?= htmlspecialchars($item['title']) ?>
                                     </a>
-
-                                    <!-- действия -->
-                                    <a href="edit.php?year=<?= $year ?>&id=<?= $item['id'] ?>" class="edit-btn">✏</a>
 
                                     <button class="delete-btn" data-id="<?= $item['id'] ?>" data-year="<?= $year ?>">
                                         🗑

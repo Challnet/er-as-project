@@ -1,73 +1,200 @@
 @use "../helpers" as *;
+.results-page {
+  .results-year-button {
+    background: var(--color-forest-700);
+    color: white;
+    border-radius: 8px;
+    padding: 14px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+  }
 
-.years-list {
-  .year-item {
+  .results-add-btn {
+    background: #3fa36f;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .results-entry-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .results-last-update {
+    margin-top: 25px;
+    color: #777;
+    font-size: 0.9em;
+  }
+}
+
+/* стрелка внутри кнопки */
+.results-year-button {
+  position: relative;
+
+.arrow {
+ display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg);
+  transition: 0.3s;
+}
+
+
+}
+
+/* когда блок открыт — стрелка поворачивается */
+.results-year-item.open .arrow {
+  transform: rotate(-135deg);
+}
+
+.results-list {
+  .results-item {
     margin: rem(4) rem(150);
     background: #005b5f;
-    border-radius: 5px;
+    border-radius: 6px;
     overflow: hidden;
     max-width: 50%;
+    transition: 0.25s ease;
 
-    .year-button {
+    .results-button {
       width: 100%;
       background: #005b5f;
-      color: #fff;
       border: none;
-      padding: rem(15) rem(20);
+      color: #fff;
+      padding: rem(16) rem(22);
+      font-weight: 500;
+      cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      cursor: pointer;
 
       .arrow {
-        width: 10px;
-        height: 10px;
-        border-right: 2px solid white;
-        border-bottom: 2px solid white;
+        width: 11px;
+        height: 11px;
+        border-right: 2px solid #fff;
+        border-bottom: 2px solid #fff;
         transform: rotate(45deg);
-        transition: .3s;
+        transition: 0.3s ease;
       }
     }
 
-    &.open .year-button .arrow {
-      transform: rotate(-135deg);
-    }
+    .results-content {
+      max-height: 0;
+      overflow: hidden;
+      background: #ffffff15;
+      padding: 0 rem(22);
+      transition: max-height 0.35s ease;
+      color: #fff;
+      font-size: rem(16);
 
-    .year-content {
-      background: #ffffff10;
-      color: white;
-      padding: 10px 20px;
-      font-size: 16px;
-    }
-  }
+      .add-result-btn {
+        margin-top: rem(12);
+        background: #057a6e;
+        color: white;
+        border: none;
+        padding: rem(8) rem(14);
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.25s;
 
-  .add-result-btn {
-    display: inline-block;
-    background: #057a6e;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    cursor: pointer;
+        &:hover {
+          background: #025c53;
+        }
+      }
 
-    &:hover {
-      background: #025c53;
-    }
-  }
+      .results-entry-list {
+        margin-top: rem(12);
 
-  .entry-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: white;
+        li {
+          display: flex;
+          align-items: center;
+          gap: rem(12);
+          padding: rem(6) 0;
+          font-size: rem(15);
 
-    .edit-btn, .delete-btn {
-      cursor: pointer;
-      opacity: .7;
+          .entry-link {
+            color: var(--color-light);
+            text-decoration: none;
+            transition: 0.2s;
 
-      &:hover {
-        opacity: 1;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+
+          .edit-btn,
+          .delete-result-btn {
+            cursor: pointer;
+            font-size: rem(14);
+            opacity: 0.8;
+            transition: 0.2s;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
       }
     }
+
+    &.open {
+      .results-content {
+        max-height: 300px; // dynamic expand
+        padding-bottom: rem(10);
+      }
+
+      .results-button .arrow {
+        transform: rotate(-135deg);
+      }
+    }
+  }
+}
+
+/* ====== TOASTS ====== */
+#toast-container {
+  position: fixed;
+  top: rem(30);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: rem(10);
+}
+
+.toast-message {
+  opacity: 0;
+  padding: rem(14) rem(22);
+  font-size: rem(16);
+  border-radius: rem(8);
+  color: #fff;
+  transition: 0.3s ease;
+  transform: scale(0.95);
+
+  &.success {
+    background: #2ecc71;
+  }
+
+  &.error {
+    background: #e74c3c;
+  }
+
+  &.show {
+    opacity: 1;
+    transform: scale(1);
   }
 }

@@ -1,8 +1,5 @@
 <?php
 require_once __DIR__ . "/src/helpers.php";
-require_once __DIR__ . "/src/views/partials/head.php";
-
-date_default_timezone_set("Asia/Almaty");
 
 $year = $_GET["year"] ?? null;
 $id = $_GET["id"] ?? null;
@@ -30,61 +27,56 @@ foreach ($entries as $item) {
 if (!$entry) {
     die("Запись не найдена.");
 }
-
 ?>
 
-<main class="container">
+<?php require_once __DIR__ . "/src/views/partials/head.php"; ?>
 
+<main class="container">
     <h1><?= htmlspecialchars($entry["title"]) ?></h1>
 
-    <!-- Вывод текста -->
     <?php if (!empty($entry["content"])): ?>
         <p><?= nl2br(htmlspecialchars($entry["content"])) ?></p>
     <?php endif; ?>
 
-    <!-- Файл -->
     <?php if (!empty($entry["file"])): ?>
-        <p>
-            <a href="uploads/results/<?= $year ?>/<?= $entry["file"] ?>" target="_blank">📎 Открыть прикрепленный файл</a>
-        </p>
+        <p><a href="uploads/results/<?= $year ?>/<?= $entry["file"] ?>" target="_blank">📎 Открыть файл</a></p>
     <?php endif; ?>
 
-    <!-- Дата -->
     <p style="margin-top:20px;color:#777;">
-        Последнее изменение: <?= $entry["date"] ?>
+        Дата последних изменений: <?= $entry["date"] ?>
     </p>
 
     <hr>
 
-    <!-- Управление -->
     <a href="results.php" class="back-btn">⬅ Вернуться</a>
 
-    <button id="open-modal-btn" class="add-content-btn">➕ Добавить содержимое</button>
+    <button id="open-modal-btn" class="add-content-btn">
+        ➕ Добавить
+    </button>
 
-
-    <!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
+    <!-- ==== MODAL ==== -->
     <div id="content-modal" class="modal hidden">
         <div class="modal-window">
 
             <button class="modal-close">✖</button>
-            <h3>Добавление текста или файла</h3>
+            <h3>Добавить файл или текст</h3>
 
-            <form id="result-form" action="src/actions/save-result.php" method="POST" enctype="multipart/form-data">
+            <form action="src/actions/save-result.php" method="POST" enctype="multipart/form-data">
 
                 <input type="hidden" name="year" value="<?= $year ?>">
                 <input type="hidden" name="id" value="<?= $id ?>">
 
-                <label>Текст:</label>
+                <label>Текст (необязательно):</label>
                 <textarea name="content" rows="6"></textarea>
 
-                <label>Файл (опционально):</label>
+                <label>Файл (необязательно):</label>
                 <input type="file" name="file">
 
-                <button type="submit" class="save-btn">💾 Сохранить</button>
+                <button type="submit" class="save-btn">Сохранить</button>
             </form>
         </div>
     </div>
-
+    
 </main>
 
 <?php require_once __DIR__ . "/src/views/partials/footer.php"; ?>

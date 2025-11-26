@@ -53,7 +53,7 @@ if (!$entry) {
             <label>Заменить файл (необязательно):</label>
             <input type="file" name="file">
 
-            <button type="submit">💾 Сохранить изменения</button>
+            <button type="submit">Сохранить изменения</button>
         </form>
 
         <br>
