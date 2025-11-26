@@ -1,69 +1,119 @@
-<?php require_once __DIR__ . "/src/views/partials/isUserLoggedIn.php" ?>
 
-<?php require_once __DIR__ . "/src/views/partials/head.php" ?>
+<?php require_once __DIR__ . "/src/views/partials/isUserLoggedIn.php"?>
 
-<?php
+<?php require_once __DIR__ . "/src/views/partials/head.php"?>
 
-$pageTitle = "Результаты НИР";
-require_once __DIR__ . "/src/views/partials/hero.php"
+<? $pageTitle = "Результаты НИР";
+require_once __DIR__ . "/src/views/partials/hero.php";
 
+$years = ["2027", "2026", "2025"];
 ?>
 
-<main class="container">
-  <div class="title-block">
-    <h1>
-      Анализ и решение технологических и технических задач для вашего
-      предприятия.
-    </h1>
-  </div>
-
-  <p>
-    Научно-производственное объединение Иннотех образован в 2017 году
-    командой высококвалифицированных научных и технических специалистов. С
-    2018 года НПО Иннотех аккредитовано МНВО РК в качестве субъекта научной
-    и/или научно-технической деятельности. Сфера наших интересов —
-    исследование рабочих процессов и разработка нового и нестандартного
-    технологического оборудования для стройиндустрии, агропромышленного
-    комплекса, перерабатывающих и других отраслей промышленности.
-  </p>
-
-  <div class="gallery">
-    <div class="gallery-item">
-      <img src="images/smart-agriculture.jpg" alt="" />
+<main class="container results-page">
+    <div class="title-block">
+        <h1>Результаты научно-исследовательских работ</h1>
     </div>
 
-    <div class="gallery-item">
-      <img src="images/factory.jpg" alt="" />
-    </div>
+    <?php if (isset($_SESSION["message"])): ?>
+        <div class="results-alert <?= key($_SESSION['message']) ?>">
+            <?= reset($_SESSION["message"]) ?>
+        </div>
+        <?php unset($_SESSION["message"]); ?>
+    <?php endif; ?>
 
-    <div class="gallery-item">
-      <img src="images/food.jpg" alt="" />
-    </div>
-  </div>
+       <?php if (!isset($_SESSION['user'])): ?>
+        <div class="auth-warning">
+            Чтобы добавлять или изменять данные — вы должны 
+            <a href="login.php">авторизоваться</a>.
+        </div>
+    <?php endif; ?>
 
-  <section class="work-directions">
-    <h2>Основные направления нашей работы:</h2>
+    <section class="results-years-list" data-js-years-list>
+        <?php foreach ($years as $year): ?>
 
-    <ul class="directions-list">
-      <li>
-        НИР и ОКР (научно-исследовательские и опытно-конструкторские работы)
-        технической направленности;
-      </li>
-      <li>
-        Подготовка грантовой документации в различных областях, в том числе
-        по коммерциализации РННТД;
-      </li>
-      <li>
-        Разработка, проектирование и изготовление нового и уникального
-        технологического оборудования для различных производственных сфер;
-      </li>
-      <li>Патентные работы и услуги;</li>
-      <li>
-        Услуги по техническому сервису оборудования (вибродиагностика,
-        центровка, балансировка).
-      </li>
-    </ul>
-  </section>
+            <?php
+            $dir = __DIR__ . "/uploads/results/$year/";
+            $metaFile = $dir . "meta.json";
+
+            $entries = file_exists($metaFile)
+                ? json_decode(file_get_contents($metaFile), true)
+                : [];
+            ?>
+
+            <div class="results-year-item" data-js-year-item>
+                <button class="results-year-button" data-js-year-button>
+                    <span><?= $year ?></span>
+                    <i class="arrow" data-js-arrow></i>
+                </button>
+
+                <div class="results-year-content" data-js-year-content>
+
+                    <!-- кнопка создания записи -->
+                    <button class="results-add-btn add-result-btn" data-year="<?= $year ?>">➕ Добавить</button>
+
+                    <ul class="results-entry-list">
+
+                        <?php if (!empty($entries)): ?>
+                            <?php foreach ($entries as $item): ?>
+                                
+                                <li class="results-entry-item"
+                                    data-id="<?= $item['id'] ?>"
+                                    data-year="<?= $year ?>"
+                                >
+                                    <a class="results-entry-link" href="view-result.php?year=<?= $year ?>&id=<?= $item['id'] ?>">
+                                        <?= htmlspecialchars($item['title']) ?>
+                                    </a>
+
+                                    <button class="results-delete-btn delete-result-btn" 
+                                            data-id="<?= $item['id'] ?>" 
+                                            data-year="<?= $year ?>">
+                                        🗑
+                                    </button>
+                                </li>
+
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <li class="results-empty">Нет записей</li>
+                        <?php endif; ?>
+
+                    </ul>
+                </div>
+            </div>
+
+        <?php endforeach; ?>
+    </section>
+
+    <?php
+    date_default_timezone_set("Asia/Almaty");
+
+    $lastUpdate = null;
+
+    foreach ($years as $year) {
+        $metaFile = __DIR__ . "/uploads/results/$year/meta.json";
+        if (!file_exists($metaFile)) continue;
+
+        $entries = json_decode(file_get_contents($metaFile), true);
+
+        foreach ($entries as $entry) {
+            if (!empty($entry["date"])) {
+                $timestamp = DateTime::createFromFormat("d.m.Y H:i", $entry["date"])->getTimestamp();
+                if (!$lastUpdate || $timestamp > $lastUpdate) {
+                    $lastUpdate = $timestamp;
+                }
+            }
+        }
+    }
+
+    $lastUpdateFormatted = $lastUpdate
+        ? date("d.m.Y H:i", $lastUpdate)
+        : "Изменений пока нет";
+    ?>
+
+    <p class="results-last-update">
+        Дата последних изменений: <strong><?= $lastUpdateFormatted ?></strong>
+    </p>
+
+    
 </main>
 
-<?php require_once __DIR__ . "/src/views/partials/footer.php" ?>
+<?php require_once __DIR__ . "/src/views/partials/footer.php"; ?>

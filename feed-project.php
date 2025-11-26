@@ -17,7 +17,7 @@ require_once __DIR__ . "/src/views/partials/hero.php"
     </div>
 
     <div class="gallery-item">
-      <img src="images/control-concept.jpg" alt="" />
+      <img src="images/economical-heating.jpg" alt="" />
     </div>
 
     <div class="gallery-item">
