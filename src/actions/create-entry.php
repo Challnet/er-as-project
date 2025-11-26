@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . "/../helpers.php";
 
-// Казахстан (ВКО)
 date_default_timezone_set("Asia/Almaty");
 
 $year = $_POST["year"] ?? null;
@@ -17,8 +16,6 @@ $metaFile = $dir . "meta.json";
 if (!is_dir($dir)) {
     mkdir($dir, 0777, true);
 }
-
-// ====== Генерация названия ======
 
 $months = [
     "01" => "января", "02" => "февраля", "03" => "марта",
@@ -40,7 +37,7 @@ $entry = [
     "title" => $title,
     "content" => "",
     "file" => null,
-    "date" => date("d.m.Y H:i") // <-- теперь совпадает со стилем во всех файлах
+    "date" => date("d.m.Y H:i")
 ];
 
 $meta = file_exists($metaFile)
