@@ -1,3 +1,5 @@
+<?php require_once __DIR__ . "/src/views/partials/isUserLoggedIn.php" ?>
+
 <?php
 require_once __DIR__ . "/src/helpers.php";
 
@@ -50,9 +52,11 @@ if (!$entry) {
 
     <a href="service.php" class="back-btn">⬅ Вернуться</a>
 
-    <button id="open-modal-btn" class="add-content-btn">
-        ➕ Добавить
-    </button>
+    <?php if ((isset($_SESSION['user']['id'])) && ($user["user_role_id"] === 3)): ?>
+        <button id="open-modal-btn" class="add-content-btn">
+            ➕ Добавить
+        </button>
+    <?php endif; ?>
 
 
     <!-- ==== MODAL ==== -->

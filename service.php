@@ -1,6 +1,5 @@
-
 <?php require_once __DIR__ . "/src/views/partials/isUserLoggedIn.php" ?>
-<?php require_once __DIR__ . "/src/views/partials/head.php"?>
+<?php require_once __DIR__ . "/src/views/partials/head.php" ?>
 
 
 <?php $pageTitle = "Закупка товаров, работ, услуг";
@@ -17,10 +16,11 @@ $years = ["2027", "2026", "2025"];
         </h1>
     </div>
 
-    <?php if (!isset($_SESSION['user'])): ?>
+    <?php if (!(isset($_SESSION['user']['id'])) || !($user["user_role_id"] === 3)): ?>
         <div class="auth-warning">
-            Чтобы добавлять или изменять данные — вы должны 
-            <a href="login.php">авторизоваться</a>.
+            Чтобы добавлять или изменять данные — вы должны
+            <a href="login.php">авторизоваться</a>
+            и являться администратором
         </div>
     <?php endif; ?>
 
@@ -52,25 +52,28 @@ $years = ["2027", "2026", "2025"];
                 <div class="year-content" data-js-year-content>
 
                     <!-- Кнопка добавления -->
-                    <button class="add-entry-btn" data-year="<?= $year ?>">➕ Добавить</button>
+                    <?php if ((isset($_SESSION['user']['id'])) && ($user["user_role_id"] === 3)): ?>
+                        <button class="add-entry-btn" data-year="<?= $year ?>">➕ Добавить</button>
+                    <?php endif; ?>
 
                     <ul class="entry-list">
                         <?php if (!empty($entries)): ?>
                             <?php foreach ($entries as $item): ?>
-                                
+
                                 <li class="entry-item"
                                     data-id="<?= $item['id'] ?>"
-                                    data-year="<?= $year ?>"
-                                >
+                                    data-year="<?= $year ?>">
 
                                     <!-- Название кликабельно -->
                                     <a href="view.php?year=<?= $year ?>&id=<?= $item['id'] ?>" class="entry-link">
                                         <?= htmlspecialchars($item['title']) ?>
                                     </a>
 
-                                    <button class="delete-btn" data-id="<?= $item['id'] ?>" data-year="<?= $year ?>">
-                                        🗑
-                                    </button>
+                                    <?php if ((isset($_SESSION['user']['id'])) && ($user["user_role_id"] === 3)): ?>
+                                        <button class="delete-btn" data-id="<?= $item['id'] ?>" data-year="<?= $year ?>">
+                                            🗑
+                                        </button>
+                                    <?php endif; ?>
                                 </li>
 
                             <?php endforeach; ?>
@@ -107,7 +110,7 @@ $years = ["2027", "2026", "2025"];
         }
     }
 
-    $lastUpdateFormatted = $lastUpdate 
+    $lastUpdateFormatted = $lastUpdate
         ? date("d.m.Y H:i", $lastUpdate)
         : "Изменений пока нет";
     ?>

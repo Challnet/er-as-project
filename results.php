@@ -1,12 +1,14 @@
+<?php require_once __DIR__ . "/src/views/partials/isUserLoggedIn.php" ?>
 
-<?php require_once __DIR__ . "/src/views/partials/isUserLoggedIn.php"?>
+<?php require_once __DIR__ . "/src/views/partials/head.php" ?>
 
-<?php require_once __DIR__ . "/src/views/partials/head.php"?>
+<?php
 
-<? $pageTitle = "Результаты НИР";
+$pageTitle = "Результаты НИР";
 require_once __DIR__ . "/src/views/partials/hero.php";
 
 $years = ["2027", "2026", "2025"];
+
 ?>
 
 <main class="container results-page">
@@ -21,10 +23,16 @@ $years = ["2027", "2026", "2025"];
         <?php unset($_SESSION["message"]); ?>
     <?php endif; ?>
 
-       <?php if (!isset($_SESSION['user'])): ?>
+
+    <!-- <?php if ($user["user_role_id"] === 3): ?>
+      <button role="button">Administrate</button>
+    <?php endif; ?> -->
+
+    <?php if (!(isset($_SESSION['user']['id'])) || !($user["user_role_id"] === 3)): ?>
         <div class="auth-warning">
-            Чтобы добавлять или изменять данные — вы должны 
-            <a href="login.php">авторизоваться</a>.
+            Чтобы добавлять или изменять данные — вы должны
+            <a href="login.php">авторизоваться</a>
+            и являться администратором
         </div>
     <?php endif; ?>
 
@@ -49,26 +57,30 @@ $years = ["2027", "2026", "2025"];
                 <div class="results-year-content" data-js-year-content>
 
                     <!-- кнопка создания записи -->
-                    <button class="results-add-btn add-result-btn" data-year="<?= $year ?>">➕ Добавить</button>
+
+                    <?php if ((isset($_SESSION['user']['id'])) && ($user["user_role_id"] === 3)): ?>
+                        <button class="results-add-btn add-result-btn" data-year="<?= $year ?>">➕ Добавить</button>
+                    <?php endif; ?>
 
                     <ul class="results-entry-list">
 
                         <?php if (!empty($entries)): ?>
                             <?php foreach ($entries as $item): ?>
-                                
+
                                 <li class="results-entry-item"
                                     data-id="<?= $item['id'] ?>"
-                                    data-year="<?= $year ?>"
-                                >
+                                    data-year="<?= $year ?>">
                                     <a class="results-entry-link" href="view-result.php?year=<?= $year ?>&id=<?= $item['id'] ?>">
                                         <?= htmlspecialchars($item['title']) ?>
                                     </a>
 
-                                    <button class="results-delete-btn delete-result-btn" 
-                                            data-id="<?= $item['id'] ?>" 
+                                    <?php if ((isset($_SESSION['user']['id'])) && ($user["user_role_id"] === 3)): ?>
+                                        <button class="results-delete-btn delete-result-btn"
+                                            data-id="<?= $item['id'] ?>"
                                             data-year="<?= $year ?>">
-                                        🗑
-                                    </button>
+                                            🗑
+                                        </button>
+                                    <?php endif; ?>
                                 </li>
 
                             <?php endforeach; ?>
@@ -113,7 +125,7 @@ $years = ["2027", "2026", "2025"];
         Дата последних изменений: <strong><?= $lastUpdateFormatted ?></strong>
     </p>
 
-    
+
 </main>
 
 <?php require_once __DIR__ . "/src/views/partials/footer.php"; ?>
