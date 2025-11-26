@@ -809,7 +809,7 @@ button[aria-label]::before {
   left: 50%;
   height: auto;
   width: auto;
-  max-width: 500;
+  max-width: 62.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -822,15 +822,30 @@ button[aria-label]::before {
   z-index: 10;
   transform: translate(-50%, -50%);
 }
+@media (width <= 47.99875rem) {
+  .hero__inner {
+    width: 80%;
+  }
+}
 .hero__title {
   font-weight: 600;
-  font-size: 2.25rem;
+  font-size: 2.125rem;
   text-align: center;
   line-height: 1.2;
 }
-@media (width <= 47.99875rem) {
+@media (width <= 90.06125rem) {
+  .hero__title {
+    font-size: 1.75rem;
+  }
+}
+@media (width <= 63.99875rem) {
   .hero__title {
     font-size: 1.5rem;
+  }
+}
+@media (width <= 47.99875rem) {
+  .hero__title {
+    font-size: 1.125rem;
   }
 }
 @media (width <= 30.06125rem) {
@@ -846,9 +861,14 @@ button[aria-label]::before {
   font-size: 3.125rem;
   font-weight: 700;
 }
-@media (width <= 47.99875rem) {
+@media (width <= 63.99875rem) {
   .title-block h1 {
     font-size: 2.125rem;
+  }
+}
+@media (width <= 47.99875rem) {
+  .title-block h1 {
+    font-size: 1.5rem;
   }
 }
 
@@ -902,7 +922,6 @@ button[aria-label]::before {
   list-style: disc;
   padding-left: 25px;
   line-height: 1.6;
-  font-size: 1.25rem;
   color: #333;
 }
 .work-directions .directions-list li {

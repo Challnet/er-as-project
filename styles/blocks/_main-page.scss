@@ -7,8 +7,12 @@
     font-size: rem(50);
     font-weight: 700;
 
-    @include mobile {
+    @include tablet {
       font-size: rem(34);
+    }
+
+    @include mobile {
+      font-size: rem(24);
     }
   }
 }
@@ -65,7 +69,7 @@
     list-style: disc;
     padding-left: 25px;
     line-height: 1.6;
-    font-size: rem(20);
+    // font-size: rem(20);
     color: #333;
 
     li {

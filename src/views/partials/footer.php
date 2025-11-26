@@ -42,10 +42,10 @@
       <div class="footer__promo">
         <p class="container">
           <strong class="footer__promo-title icon icon__copyright">
-            Индивидуальный предприниматель «Ер&nbsp;-&nbsp;Ас»&nbsp;&nbsp;&nbsp;2025
+            Индивидуальный предприниматель «Ер&nbsp;-&nbsp;Ас»&nbsp;&nbsp;&nbsp;2018
             <?php
 
-            $startYear = 2025;
+            $startYear = 2018;
             $currentYear = (int)date("Y");
 
             if ($currentYear > $startYear) {
